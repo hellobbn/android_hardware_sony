@@ -1,0 +1,52 @@
+android_app {
+    name: "XperiaParts",
+    defaults: ["SettingsLibDefaults"],
+
+    srcs: ["src/**/*.kt"],
+    resource_dirs: ["res"],
+
+    certificate: "platform",
+    platform_apis: true,
+    system_ext_specific: true,
+    privileged: true,
+
+
+    static_libs: [
+        "androidx.core_core",
+        "androidx.preference_preference",
+        "org.lineageos.settings.resources",
+        "org.lineageos.platform.internal",
+        "SystemUISharedLib",
+        "vendor.semc.hardware.display-V2.0-java",
+        "vendor.semc.hardware.display-V2.1-java",
+        "vendor.semc.hardware.display-V2.2-java"
+    ],
+
+    libs: [
+        "framework",
+        "services",
+    ],
+
+    required: [
+        "privapp_whitelist_org.lineageos.lineagesettings.device",
+        "lineage-device-setting-hiddenapi-package-whitelist",
+        "services",
+    ],
+}
+
+prebuilt_etc {
+    name: "privapp_whitelist_org.lineageos.lineagesettings.device",
+    sub_dir: "permissions",
+    src: "privapp_whitelist_org.lineageos.lineagesettings.device.xml",
+    filename_from_src: true,
+    system_ext_specific: true,
+}
+
+prebuilt_etc {
+    name: "lineage-device-setting-hiddenapi-package-whitelist",
+    sub_dir: "sysconfig",
+    src: "lineage-device-setting-hiddenapi-package-whitelist.xml",
+    filename_from_src: true,
+    system_ext_specific: true,
+}
+
